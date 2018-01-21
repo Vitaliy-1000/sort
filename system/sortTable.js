@@ -3,15 +3,46 @@ const { element, elements, client } = require('wd-interface');
 class SortTable {
     constructor() {
         this.systemUrl = 'http://localhost:5555/table',
-        this.buttonGroup = element('.btn-group').getElements('.btn.btn-default')
+        this.buttonGroup = element('.btn-group').getElements('.btn.btn-default'),
+        this.price = elements('.active.price')
     }
 
-    sortByPrice() {
-        return {
-            lowToHIght: async () => this.buttonGroup.get(0).click(),
-            hightToLow: async () => this.buttonGroup.get(1).click()
+    get sortByPrice() {
+        return { 
+            
+            lowToHight: async () => {
+                await this.buttonGroup.waitForElements(2000);
+                const but = await this.buttonGroup.get(0);
+                await but.click();
+                },
+
+            higthToLow: async () => {
+                await this.buttonGroup.waitForElements(2000);
+                const but = await this.buttonGroup.get(1);
+                await but.click(); 
+            }
+            
+
         }
     }
+
+    async textArray() {
+        await this.price.waitForElements(1000);
+        let textArr = [];
+        textArr = await this.price.map(async (element) => {
+                return await element.getText()   
+                });
+        await console.log(textArr);
+        let i = 0;
+        for(;i<(textArr.length-2);i++) {
+            textArr.map((el) => {
+                return el <= textArr[i];
+            })
+        
+        }; 
+    };
+
+
 };
 
 module.exports = SortTable;

@@ -17,15 +17,20 @@ describe('Login Page', () => {
     afterEach(async() => {
         await base.closeBrowser();
     });
-
+/*
     it('loginPage', async () => {
         expect(await base.returnCurrenUrl()).to.contains('5555');
     });
-
+*/
     it('go to sorted', async () => {
         await login.loginUserName('ded', 'ded');
-        await sortTable.sortByPrice().lowToHIght;
-        await sortTable.sortByPrice.hightToLow;
+        
+        await sortTable.sortByPrice.lowToHight();
+        await sortTable.textArray();
+        
+        await sortTable.sortByPrice.higthToLow();
+        await sortTable.textArray();
+
     });
 
 });
