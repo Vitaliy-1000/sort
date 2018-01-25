@@ -33,18 +33,14 @@ class SortTable {
                 return await element.getText()   
                 });
         await console.log(textArr);
-        let varibleIndex;
         for(let i = 0;i < textArr.length; i++) {
-            varibleIndex = textArr[i];
-            for(let y = 1; y < textArr.length; y++){
-                if ((varibleIndex < textArr[y] || varibleIndex == textArr[y])) {
+                if (textArr[i] <= textArr[i+1]) {
                     continue;
-                };
+                    console.log(true); 
             };
         }; 
-    };
-
-
+    }
+    
 };
 
 module.exports = SortTable;
