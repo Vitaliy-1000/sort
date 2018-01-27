@@ -26,11 +26,14 @@ describe('Login Page', () => {
         await login.loginUserName('ded', 'ded');
         
         await sortTable.sortByPrice.lowToHight();
-        await sortTable.textArray();
+        const sortResult = await sortTable.textArray('lowToHight');
         
-        await sortTable.sortByPrice.higthToLow();
-        await sortTable.textArray();
+        expect(sortResult).to.eql(true);
 
+        await sortTable.sortByPrice.higthToLow();
+        const sortResultH = await sortTable.textArray('higthToLow');
+
+        expect( sortResultH).to.eql(true);
     });
 
 });

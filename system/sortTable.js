@@ -26,19 +26,24 @@ class SortTable {
         }
     }
 
-    async textArray() {
+    async textArray(asertType) {
         await this.price.waitForElements(1000);
         let textArr = [];
         textArr = await this.price.map(async (element) => {
                 return await element.getText()   
                 });
-        await console.log(textArr);
-        for(let i = 0;i < textArr.length; i++) {
-                if (textArr[i] <= textArr[i+1]) {
-                    continue;
-                    console.log(true); 
+        let testSort = true;              
+
+        for(let i = 0;i < textArr.length-1; i++) {
+            const aserter = () => {
+                return asertType == 'lowToHight' ? +textArr[i] > +textArr[i+1] : +textArr[i] < +textArr[i+1]
+            }
+                if (aserter()) {
+                testSort = false
+                break
             };
-        }; 
+        };
+        return testSort 
     }
     
 };
