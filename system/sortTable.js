@@ -26,7 +26,7 @@ class SortTable {
         }
     }
 
-    async textArray(asertType) {
+    async textArraySortPrice(asertType) {
         await this.price.waitForElements(1000);
         let textArr = [];
         textArr = await this.price.map(async (element) => {
