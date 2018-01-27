@@ -26,10 +26,10 @@ class AddMashines {
         addMashines = await this.valuesAddMashines.map(async (element) => {
                 return await element.getText()   
                 });
-        let trueAddMashines;
+        let trueAddMashines = false;
         for(let i = 0; i < addMashines.length; i++) {
-            if(text != addMashines[i]){
-                trueAddMashines = false;
+            if(text == addMashines[i]){
+                trueAddMashines = true;
                 break;
             };
         };

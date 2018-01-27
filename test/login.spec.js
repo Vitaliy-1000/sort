@@ -47,7 +47,7 @@ describe('Login Page', () => {
         
         await addMashines.buttonAddMashine.click();
 
-        expect(addMashines.checkTheAudition('SAPA')).to.eql(true);
+        expect(addMashines.checkTheAudition('SAPA-200')).to.eql(true);
     });
 
 });
